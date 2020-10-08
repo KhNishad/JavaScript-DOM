@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="" style="text-align: center; margin-top: 100px;">
+    <input type="text" id="name" value="">
+    <button onclick="fetchi();" id="btn">Fetch</button>
+
+
+</div>
+
+<div style="text-align: center;">
+    <img id="img" alt="" style="width: 250px;">
+
+</div>
+<div style="text-align: center; background-color: rgb(131, 126, 131); margin: 20px; color: aliceblue;">
+    <h1 id="name2"></h1>
+    <h2 id="loc"></h2>
+    <h3 id="bio"></h2>
+    <h4 id="inst"></h3>
+    <h4 id="repo"></h3>
+    <h4 id="foll"></h4>
+</div>
+
+
+<script>
+
+async function fetchi() {
+
+    var x = document.getElementById("name").value;
+      
+    const res = await fetch
+     (`https://api.github.com/users/${x}`);
+
+    const data  = await res.json();
+    
+    var name  = data.login;
+    var bio = data.bio;
+    var inst = data.company;
+    var foll = data.followers;
+    var img = data.avatar_url;
+    var location  = data.location;
+    var repo = data.public_repos
+    
+    document.getElementById("name2").innerHTML = ` ${name}`;
+    document.getElementById("loc").innerHTML = ` ${location}`;
+    document.getElementById("bio").innerHTML = ` ${bio}`;
+    document.getElementById("inst").innerHTML = ` ${inst}`
+    document.getElementById("foll").innerHTML = `Followers : ${foll}`
+    document.getElementById("img").src = `${img}`;
+    document.getElementById('repo').innerHTML = `Repositories: ${repo}`
+    document.getElementById('name').style.display = 'none'
+    document.getElementById('btn').style.display = 'none'
+
+}
+
+
+</script>
+
+</body>
+</html>
