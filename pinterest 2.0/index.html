@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest-Home Work</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .pinterest{
+            position: relative;
+            
+        }
+        img{
+            
+            position: absolute;
+            width: 32.5%;
+            border: 5px solid rgb(168, 217, 250);
+            border-radius: 10px;
+            filter: brightness(80%);
+            
+        }
+    </style>
+</head>
+<body>
+     <div class="pinterest">
+
+                    <!-- Insert your Image  after the last Image-->
+
+        
+        <img src="./img/project2.jpg">
+        <img src="./img/project3.jpg"> 
+        <img src="./img/3.jpg">
+        <img src="./img/image1.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/image1.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/project3.jpg">
+        <img src="./img/project4.jpg">
+        <img src="./img/image2.jpg">
+        <img src="./img/image3.jpg">
+        <img src="./img/image3.jpg"> 
+        <img src="./img/project4.jpg">
+        <img src="./img/3.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/image1.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/project3.jpg">
+        <img src="./img/project4.jpg">
+        <img src="./img/3.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/image1.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/project3.jpg">
+        <img src="./img/project4.jpg">
+        <img src="./img/image2.jpg">
+        <img src="./img/image3.jpg">
+        <img src="./img/3.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/image1.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/project3.jpg">
+        <img src="./img/image2.jpg">
+        <img src="./img/image3.jpg">
+        <img src="./img/3.jpg">
+        <img src="./img/project2.jpg">
+        <img src="./img/image2.jpg">
+     </div>
+
+     <script>
+        let pinFull = document.getElementsByTagName("img")
+        var heightArr = Array.prototype.slice.call(pinFull);
+       
+       let leftH = heightArr[0].naturalHeight;
+       let midH = heightArr[1].naturalHeight;
+       let rightH = heightArr[2].naturalHeight;
+
+      // console.log(pinFull.length);
+       
+         pinFull[1].style.left  = '33%'
+         pinFull[2].style.left  = '66%'
+
+
+       for(let i=3;i<=pinFull.length-1;i++){
+          if(leftH <= midH && leftH <= rightH){
+        // console.log(leftH);
+          
+          pinFull[i].style.top = `${leftH}px`
+          leftH = leftH + pinFull[i].naturalHeight;   
+          // console.log(leftH);
+          }
+          else if(midH <= leftH && midH <= rightH){
+            pinFull[i].style.top = `${midH}px`
+            pinFull[i].style.left =  "33%"
+            midH = midH + pinFull[i].naturalHeight;   
+
+          }else{
+            pinFull[i].style.top = `${rightH}px`
+            pinFull[i].style.left =  "66%"
+            rightH = rightH + pinFull[i].naturalHeight;   
+
+          }
+       }
+        
+       
+       
+     </script>
+</body>
+</html>
